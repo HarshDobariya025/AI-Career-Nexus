@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { industries } from "@/data/industries";
+import { industries } from "@/prisma/data/industries";
 import OnboardingForm from "./_components/onboarding-form";
 import { getUserOnboardingStatus } from "@/actions/user";
 
