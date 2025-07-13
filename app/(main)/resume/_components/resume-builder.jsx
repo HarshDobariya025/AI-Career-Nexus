@@ -56,7 +56,7 @@ export default function ResumeBuilder({ initialContent }) {
     error: saveError,
   } = useFetch(saveResume);
 
-  //Watch form fields for preview updates
+  //Watch form fields for preview updates   
   const formValues = watch();
 
   useEffect(() => {
@@ -105,7 +105,7 @@ export default function ResumeBuilder({ initialContent }) {
       entriesToMarkdown(experience, "Work Experience"),
       entriesToMarkdown(education, "Education"),
       entriesToMarkdown(projects, "Projects"),
-    ]
+    ]   
       .filter(Boolean)
       .join("\n\n");
   };
