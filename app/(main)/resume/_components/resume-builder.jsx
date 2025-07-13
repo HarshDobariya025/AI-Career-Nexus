@@ -9,7 +9,7 @@ import {
   Edit,
   Loader2,
   Monitor,
-  Save,
+  Save, 
 } from "lucide-react";
 import { toast } from "sonner";
 import MDEditor from "@uiw/react-md-editor";
@@ -56,7 +56,7 @@ export default function ResumeBuilder({ initialContent }) {
     error: saveError,
   } = useFetch(saveResume);
 
-  // Watch form fields for preview updates
+  //Watch form fields for preview updates
   const formValues = watch();
 
   useEffect(() => {
@@ -113,7 +113,7 @@ export default function ResumeBuilder({ initialContent }) {
   const [isGenerating, setIsGenerating] = useState(false);
 
   const generatePDF = async () => {
-    setIsGenerating(true);
+    setIsGenerating(true); 
     try {
       const element = document.getElementById("resume-pdf");
       const opt = {
