@@ -5,9 +5,13 @@ npm install next-themes
 npm i inngest
 npx inngest-cli@latest dev
 
+// local database
+npx prisma studio
+
 //database
 npm i -D prisma  // database
 npx prisma migrate dev --name create-models // push these schema to database,  do this when all schemas are ready
+npx prisma migrate dev --name delete-ChatMessage-model  // to delete any schema or model
 
 //onboarding
 npm i react-hook-form zod @hookform/resolvers       //@@hookform/resolvers makes sure that previous  to works
@@ -25,3 +29,5 @@ npm install recharts        //for charts
 //markdown editor & html2pdf  - used in resume
 npm i @uiw/react-md-editor
 npm i html2pdf
+
+@/actions/chatBot

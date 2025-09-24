@@ -115,3 +115,4 @@ enum MarketOutlook{
   NEUTRAL
   NEGATIVE
 }
+

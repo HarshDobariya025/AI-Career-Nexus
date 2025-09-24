@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
             <Toaster richColors />
             <footer className="bg-background py-12">
               <div className="container mx-auto text-center text-gray-200"> 
-                <p>Made by Harsh Dobariya</p>
+                <p>&copy; 2025 AI Career Coach. All rights reserved.</p>
               </div>
             </footer>
         </ThemeProvider>

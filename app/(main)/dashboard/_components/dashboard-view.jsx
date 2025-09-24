@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import ChatBot from "./chatBot"
 
 const DashboardView  = ({ insights }) => {
   // Transform salary data for the chart
@@ -224,6 +225,9 @@ const DashboardView  = ({ insights }) => {
           </CardContent>
         </Card>
       </div>
+
+      {/* ChatBot Component */}
+      <ChatBot />
     </div>
   )
 };
