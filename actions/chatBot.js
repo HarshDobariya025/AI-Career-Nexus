@@ -12,26 +12,30 @@ export const chatBot = async (prompt) => {
   if (!userId) throw new Error("Unauthorized")
 
   try {
-    // Get user context for personalized responses
     const user = await db.user.findUnique({
       where: { clerkUserId: userId },
-      include: {
-        industryInsight: true,
-      },
+      include: { industryInsight: true },
     })
 
     if (!user) throw new Error("User not found")
 
-    //Create a context-aware prompt for the AI Career Coach
+    // ----- UPDATED PROMPT FOR STRICT MARKDOWN BOLD SUPPORT -----
     const contextualPrompt = `
-      You are an AI Career Coach assistant. The user is in the ${user.industry} industry.
-      
-      User's question: ${prompt}
-      
-      Please provide helpful, professional career advice. Keep responses concise but informative.
-      Focus on actionable insights related to their industry and career development.
-      
-      If the question is about salary, skills, or market trends, you can reference that they're in the ${user.industry} industry.
+      You are a professional AI Career Coach.
+      The user works in the "${user.industry}" industry.
+
+      🟦 Response Formatting Rules:
+      - Use **Markdown formatting**
+      - BOLD important terms using **double asterisks** (example: **Machine Learning**)
+      - NEVER escape or alter Markdown bold
+      - Keep the answer short (5–7 lines)
+      - Use bullet points or short paragraphs
+      - No long essays
+
+      🟦 User's Question:
+      ${prompt}
+
+      Produce a CLEAN, SHORT, MARKDOWN-FORMATTED answer with **proper bold text**.
     `
 
     const result = await model.generateContent(contextualPrompt)
@@ -39,8 +43,9 @@ export const chatBot = async (prompt) => {
     const text = response.text()
 
     return text
+
   } catch (error) {
     console.error("ChatBot error:", error)
-    return error
+    return "Something went wrong. Please try again."
   }
 }
